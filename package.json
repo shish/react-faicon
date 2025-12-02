@@ -1,0 +1,41 @@
+{
+  "name": "@shish2k/react-faicon",
+  "version": "0.0.0",
+  "author": "Shish <shish+npm@shishnet.org>",
+  "license": "MIT",
+  "repository": "shish/react-faicon",
+  "homepage": "https://github.com/shish/react-faicon",
+  "bugs": {
+    "url": "https://github.com/shish/react-faicon/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rslib build",
+    "check": "biome check --write",
+    "dev": "rslib build --watch",
+    "format": "biome format --write",
+    "release": "git tag $npm_package_version && git push && git push --tags && npm publish --tag latest --access public"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.2",
+    "@rsbuild/plugin-react": "^1.4.2",
+    "@rslib/core": "^0.18.2",
+    "@types/react": "^19.2.6",
+    "react": "^19.2.0",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  }
+}
