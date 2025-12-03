@@ -1,6 +1,6 @@
 {
   "name": "@shish2k/react-faicon",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Shish <shish+npm@shishnet.org>",
   "license": "MIT",
   "repository": "shish/react-faicon",
@@ -36,6 +36,7 @@
   },
   "peerDependencies": {
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "react-dom": ">=16.9.0",
+    "@fortawesome/fontawesome-common-types": ">=7.0.0"
   }
 }
