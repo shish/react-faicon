@@ -12,7 +12,7 @@ export interface FAIconProps
   className?: string;
 }
 
-export function FAIcon({ icon, className = '', ...svgProps }: FAIconProps) {
+export function FAIcon({ icon, className = '', style, ...svgProps }: FAIconProps) {
   let [width, height, _ligatures, _unicode, svgPathData] = icon.icon;
   if (typeof svgPathData === 'string') {
     svgPathData = [svgPathData];
@@ -31,6 +31,7 @@ export function FAIcon({ icon, className = '', ...svgProps }: FAIconProps) {
         width: '1em',
         overflow: 'visible',
         verticalAlign: '-0.125em',
+        ...style,
       }}
       role="img"
       xmlns="http://www.w3.org/2000/svg"
