@@ -1,42 +1,55 @@
 {
   "name": "@shish2k/react-faicon",
-  "version": "0.0.2",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A tiny (<1kb) fontawesome icon renderer",
+  "keywords": [
+    "react",
+    "icon"
+  ],
   "author": "Shish <shish+npm@shishnet.org>",
   "license": "MIT",
-  "repository": "shish/react-faicon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shish/react-faicon.git"
+  },
   "homepage": "https://github.com/shish/react-faicon",
   "bugs": {
     "url": "https://github.com/shish/react-faicon/issues"
   },
-  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "default": "./dist/index.js"
     }
   },
-  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "rslib build",
-    "check": "biome check --write",
-    "dev": "rslib build --watch",
-    "format": "biome format --write",
-    "release": "git tag $npm_package_version && git push && git push --tags && npm publish --tag latest --access public"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.3.2",
-    "@rsbuild/plugin-react": "^1.4.2",
-    "@rslib/core": "^0.18.2",
-    "@types/react": "^19.2.6",
-    "react": "^19.2.0",
-    "typescript": "^5.9.3"
-  },
   "peerDependencies": {
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0",
     "@fortawesome/fontawesome-common-types": ">=7.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.0",
+    "@types/react": "^19.0",
+    "react": "^19.0",
+    "tsdown": "^0.21",
+    "typescript": "^6.0"
+  },
+  "scripts": {
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check --write .",
+    "build": "tsdown",
+    "check-git-clean": "test $(git rev-parse --abbrev-ref HEAD) = main || (echo 'please checkout the main branch to make a release!' >&2 && exit 1) && test -z \"$(git status --porcelain)\" || (echo 'please commit your changes before making a release!' >&2 && exit 1)",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run check",
+    "release": "npm run check-git-clean && git tag $npm_package_version && git push && git push --tags && npm publish --tag latest --access public"
+  },
+  "tsdown": {
+    "platform": "browser"
   }
 }

@@ -3,6 +3,7 @@
 *.local
 *.log*
 package-lock.json
+*.tgz
 
 # Dist
 node_modules
